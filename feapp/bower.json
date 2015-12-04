@@ -1,0 +1,49 @@
+{
+  "name": "oyst-project",
+  "version": "0.0.1",
+  "homepage": "https://github.com/",
+  "authors": [
+    "Rui Carvalho <ruionline@yahoo.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+  ],
+  "dependencies": {
+    "angular": "~1.3.13",
+    "angular-resource": "~1.3.13",
+    "angular-route": "~1.3.13",
+    "angular-touch": "~1.3.13",
+    "angular-animate": "~1.3.13",
+    "angular-cookies": "~1.3.13",
+    "angular-bootstrap": "~0.13.4",
+    "angular-ui-router": "~0.2.13",
+    "boostrap-sass": "~3.3.5",
+    "ngstorage": "~0.3.0",
+    "angular-scroll": "~0.6.5",
+    "angular-cached-resource": "~1.4.2",
+    "angular-cache": "~4.2.0",
+    "angular-moment": "~0.9.0",
+    "angular-utf8-base64": "~0.0.5",
+    "angular-chart.js": "~0.8.0",
+    "angular-jwt": "~0.0.9",
+    "a0-angular-storage": "~0.0.11",
+    "cryptojslib": "~3.1.2",
+    "lodash": "~3.10.1",
+    "ui-router": "~0.2.15",
+    "angular-ui-grid": "~3.0.7",
+    "angular-sanitize": "~1.3.13",
+    "js-crc": "~0.1.0",
+    "angular-nvd3": "~1.0.2",
+    "moment": "~2.10.6",
+    "angular-base64": "~2.0.5"
+  },
+  "resolutions": {
+    "angular": "~1.3.13",
+    "moment": "~2.10.6"
+  }
+}
