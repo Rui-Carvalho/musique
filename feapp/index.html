@@ -14,15 +14,30 @@
 
     <body ng-app="app">
         <div>
-            
             <base href="/"></base>
             
-            {% include 'BOFFrameworkBundle:regions:header.html.twig' %}          
+            <header class="header header--default hidden-sm hidden-xs hidden-print">
+
+                <!-- INCLUDE ANGULAR DIRECTIVE FOR COOKIES -->
+                <cookies-notification policy-link = "This site uses cookies"></cookies-notification>
+
+                <div class="header-meta padded-top padded-bottom hidden-sm hidden-xs">
+                    <div class="container">
+                        
+                    </div>
+                </div>
+            </header>
+
+
+
+
+
+
             
             {% include 'BOFFrameworkBundle:partials:navigation.html.twig' %}
             
             <div class="bof-main-content">
-                
+                content....
             </div>
             
             {% include 'BOFFrameworkBundle:regions:footer.html.twig' %}
