@@ -1,5 +1,5 @@
 {
-  "name": "oyst-app",
+  "name": "musique-app",
   "version": "0.0.1",
   "main": "gulpfile.js",
   "dependencies": {
@@ -44,10 +44,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Rui-Carvalho/oyst.git"
+    "url": "https://github.com/Rui-Carvalho/musique.git"
   },
   "bugs": {
-    "url": "https://github.com/Rui-Carvalho/oyst/issues"
+    "url": "https://github.com/Rui-Carvalho/musique/issues"
   },
-  "homepage": "http://oyst.project"
+  "homepage": "http://musique.project"
 }

@@ -1,4 +1,4 @@
-# oyst
+# Musique
 
-https://github.com/Rui-Carvalho/oyst.git
+https://github.com/Rui-Carvalho/musique.git
 

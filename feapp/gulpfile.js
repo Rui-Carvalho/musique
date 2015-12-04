@@ -35,7 +35,7 @@ var gulp        = require('gulp'),
 ;
 
 require('gulp-stats')(gulp);
-var domain  = (argv.domain) ? '//'+ argv.domain : '//oyst.project';
+var domain  = (argv.domain) ? '//'+ argv.domain : '//musique.project';
 var gulp_src = gulp.src; // https://www.timroes.de/2015/01/06/proper-error-handling-in-gulp-js/
 gulp.src = function() {
   return gulp_src.apply(gulp, arguments)
@@ -100,7 +100,7 @@ var bootstrapFiles = _(buildConfig.bootstrap).values().flatten().value(),
         app: argv.app + '-app.js',
         domain: domain
     },
-    localhost = 'http://oyst.project/';
+    localhost = 'http://musique.project/';
 
     //create file for angular app
     fs.writeFileSync(buildConfig.bootstrap.config[0], "var angularModules = ['" + angularMods.join("', '") + "'];");
