@@ -10,5 +10,9 @@
 		background: linear-gradient(to bottom,  #546068 12%,#344959 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#546068', endColorstr='#344959',GradientType=0 ); /* IE6-9 */
 	}
+
+	&--big {
+		height: 100px;
+	}
 	
 }
