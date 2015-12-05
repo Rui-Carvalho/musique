@@ -11,7 +11,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "vendor",
+    "vendor"
   ],
   "dependencies": {
     "angular": "~1.3.13",
@@ -22,7 +22,7 @@
     "angular-cookies": "~1.3.13",
     "angular-bootstrap": "~0.13.4",
     "angular-ui-router": "~0.2.13",
-    "boostrap-sass": "~3.3.5",
+    "bootstrap-sass": "~3.3.5",
     "ngstorage": "~0.3.0",
     "angular-scroll": "~0.6.5",
     "angular-cached-resource": "~1.4.2",
@@ -35,10 +35,8 @@
     "cryptojslib": "~3.1.2",
     "lodash": "~3.10.1",
     "ui-router": "~0.2.15",
-    "angular-ui-grid": "~3.0.7",
     "angular-sanitize": "~1.3.13",
     "js-crc": "~0.1.0",
-    "angular-nvd3": "~1.0.2",
     "moment": "~2.10.6",
     "angular-base64": "~2.0.5"
   },
