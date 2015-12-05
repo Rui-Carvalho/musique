@@ -1,0 +1,11 @@
+.button-musique {
+    padding: 10px;
+    border: 1px solid transparent;
+
+    &.is-active,
+    &:hover {
+        background: blue;
+        border-color: red;
+        //box-shadow: 0 0 0 0 rgba(0 0 0 0); 
+    }
+}
