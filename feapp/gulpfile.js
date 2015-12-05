@@ -58,13 +58,13 @@ var bootstrapFiles = _(buildConfig.bootstrap).values().flatten().value(),
     angularFiles   = mergeArray(_(buildConfig.angular).values().value()),
     angularMods    = _(buildConfig.angular).keys().value(),
     customJs       = _.union(angularFiles, bootstrapFiles), //only for jshint
-    fileList       = _.union(libFiles, customJsNew),
+    fileList       = _.union(libFiles, customJs),
     fontList       = ['vendor/boostrap-sass/assets/fonts/bootstrap/*'],
     //phpViews       = 'src/OYST/**/views/**/*.html.twig',
     scssSource     = 'scss/**/*.scss',
     dev = {
         inject:          buildConfig.build.development.folder,
-        css_inject_file: 'css.html.twig',
+        css_inject_file: 'css.html',
         footer:          buildConfig.build.development.folder + '/' + buildConfig.build.development.js,
         css:             'css', //path to css files
         fonts:           'fonts', //path to fonts
@@ -75,7 +75,7 @@ var bootstrapFiles = _(buildConfig.bootstrap).values().flatten().value(),
     },
     dist = {
         inject:          buildConfig.build.production.folder,
-        css_inject_file: 'css.html.twig',
+        css_inject_file: 'css.html',
         footer:          buildConfig.build.production.folder + '/' + buildConfig.build.production.js,
         css:             'web/assets/css',
         fonts:           'web/assets/fonts',
@@ -90,7 +90,6 @@ var bootstrapFiles = _(buildConfig.bootstrap).values().flatten().value(),
     fs.writeFileSync(buildConfig.bootstrap.config[0], "var angularModules = ['" + angularMods.join("', '") + "'];");
 
 
-throw '';
 
 
 // =======================================================================
