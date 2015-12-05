@@ -31,12 +31,6 @@ gulp dist --app=site
 gulp dist --app=spa
 ```
 
-Force legacy support
-
-```
-gulp dist --app=site -l
-```
-
 # Application Config
 
 This is a small guideline about how to configure modules.json in order to inject dependencies into AngularJs
@@ -52,42 +46,34 @@ bower install <libname> --save
 ```json
 {
     "libs": {
-        "lodash": ["assets/vendor/lodash/lodash.js"],
-        "moment": ["assets/vendor/moment/moment.js"],
-        "chart": ["assets/vendor/Chart.js/Chart.js"],
-        "aes": ["assets/vendor/cryptojslib/rollups/aes.js"],
-        "ecb": ["assets/vendor/cryptojslib/rollups/mode-ecb.js"],
-        "pusher": ["assets/vendor/pusher/dist/pusher.js"],
-        "json2": ["assets/vendor/pusher/dist/json2.js"],
-        "sockjs": ["assets/vendor/pusher/dist/sockjs.js"],
-        "angular": ["assets/vendor/angular/angular.js"]
+        "lodash": ["vendor/lodash/lodash.js"],
+        "moment": ["vendor/moment/moment.js"],
+        "aes": ["vendor/cryptojslib/rollups/aes.js"],
+        "ecb": ["vendor/cryptojslib/rollups/mode-ecb.js"],
+        "angular": ["vendor/angular/angular.js"]
     },
     "angular": {
-        "ngResource": ["assets/vendor/angular-resource/angular-resource.js"],
-        "ngTouch": ["assets/vendor/angular-touch/angular-touch.js"],
-        "ngStorage": ["assets/vendor/ngstorage/ngStorage.js"],
-        "ngCookies": ["assets/vendor/angular-cookies/angular-cookies.js"],
-        "ngAnimate": ["assets/vendor/angular-animate/angular-animate.js"],
-        "ngSanitize": ["assets/vendor/angular-sanitize/angular-sanitize.js"],
+        "ngResource": ["vendor/angular-resource/angular-resource.js"],
+        "ngTouch": ["vendor/angular-touch/angular-touch.js"],
+        "ngStorage": ["vendor/ngstorage/ngStorage.js"],
+        "ngCookies": ["vendor/angular-cookies/angular-cookies.js"],
+        "ngAnimate": ["vendor/angular-animate/angular-animate.js"],
+        "ngSanitize": ["vendor/angular-sanitize/angular-sanitize.js"],
 
-
-
-        "app.permission": ["assets/js/spa/Permission/config.js", "assets/js/spa/Permission/*/*.js"],
-        "app.job": ["assets/js/spa/Job/config.js", "assets/js/spa/Job/*/*.js"],
-        "app.kpi": ["assets/js/spa/Kpi/config.js", "assets/js/spa/Kpi/*/*.js"],
-        "app.ui": ["assets/js/spa/UI/config.js", "assets/js/spa/UI/*/*.js"]
+        "app.permission": ["js/spa/Permission/config.js", "js/spa/Permission/*/*.js"],
+        "app.ui": ["js/spa/UI/config.js", "js/spa/UI/*/*.js"]
     },
     "bootstrap": {
-        "config": ["assets/js/spa/modules.js"],
-        "app": ["assets/js/spa/app.js"]
+        "config": ["js/spa/modules.js"],
+        "app": ["js/spa/app.js"]
     },
     "build": {
         "development": {
-            "folder": "src/BOF/SpaBundle/Resources/views/Partials/dev",
+            "folder": "src/MUSIQUE/SpaBundle/Resources/views/Partials/dev",
             "js": "js.html.twig"
         },
         "production": {
-            "folder": "src/BOF/SpaBundle/Resources/views/Partials/dist",
+            "folder": "src/MUSIQUE/SpaBundle/Resources/views/Partials/dist",
             "js": "js.html.twig"
         }
     }
