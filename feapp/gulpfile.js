@@ -64,22 +64,22 @@ var bootstrapFiles = _(buildConfig.bootstrap).values().flatten().value(),
     scssSource     = 'scss/**/*.scss',
     dev = {
         inject:          buildConfig.build.development.folder,
-        css_inject_file: 'css.html',
+        css_inject_file: 'css_partial.html',
         footer:          buildConfig.build.development.folder + '/' + buildConfig.build.development.js,
         css:             'css', //path to css files
         fonts:           'fonts', //path to fonts
         scss:            'scss/main.scss', //path to 'include all' sass file
-        js:              '',
+        // js:              '', ===> we are not concatenating js files for development
         app:             'app.js',
         domain:          ''
     },
     dist = {
         inject:          buildConfig.build.production.folder,
-        css_inject_file: 'css.html',
+        css_inject_file: 'index.html',
         footer:          buildConfig.build.production.folder + '/' + buildConfig.build.production.js,
         css:             'web/assets/css',
         fonts:           'web/assets/fonts',
-        scss:            'assets/scss/main.scss',
+        scss:            'scss/main.scss',
         js:              'web/assets/js',
         app:             argv.app + '-app.js',
         domain:          domain
@@ -299,8 +299,8 @@ gulp.task('dev-css-sm', function () {
 gulp.task('dev-inject-css', function () {
     return gulp.src(buildConfig.build.development.folder +'/'+ dev.css_inject_file)
         .pipe(inject(
-            gulp.src(dev.css + '/*'),
-            assetPathTransformation(dev.domain, '', '')
+            gulp.src(dev.css + '/*')
+            //,assetPathTransformation(dev.domain, '', '')
         ))
         .pipe(gulp.dest(dev.inject));
 });
