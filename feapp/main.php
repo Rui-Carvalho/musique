@@ -10,19 +10,6 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-title" content="Cours de Musique">
         <meta name="robots" content="noindex, nofollow"/>
-
-        <!-- inject:css -->
-        <!-- endinject -->
-
-        <!-- JS detection for setting html class as "js" or "no-js" -->
-        <script>(function(e) { e.className = e.className.replace(/\bno-js\b/,'js'); })(document.documentElement);</script>
-
-        <!--  JS detection for touch devices - adds "touch" or "no-touch" to the html element -->
-        <script>(function(w, d) {
-            var hasTouch = ('ontouchstart' in w) || w.DocumentTouch && d instanceof DocumentTouch;
-            d.documentElement.className += ' ' + (hasTouch ? 'touch' : 'no-touch');
-        })(window, document);</script>
-
     </head>
 
     <body ng-app="app">
@@ -53,7 +40,7 @@
             {% include 'BOFFrameworkBundle:partials:navigation.html.twig' %}
             
             <div class="bof-main-content">
-                content....
+                content.... this is the main
             </div>
             
 
@@ -80,9 +67,5 @@
             
         </div>
     </body>
-
-    <!-- inject:js -->
-    <!-- endinject -->
-
 </html>
 
