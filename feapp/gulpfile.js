@@ -6,6 +6,13 @@ if (typeof argv.app == "undefined") {
     process.exit(0);
 }
 
+
+
+
+// =======================================================================
+//                            LIBRARY DEPENDENCIES
+// _______________________________________________________________________
+
 var gulp        = require('gulp'),
     jshint      = require('gulp-jshint'),
     sass        = require('gulp-sass'),
@@ -34,18 +41,73 @@ var gulp        = require('gulp'),
     buildConfig = require('./js/' + argv.app + '/modules.json')
 ;
 
-require('gulp-stats')(gulp);
+require('gulp-stats')(gulp); // https://www.npmjs.com/package/gulp-stats [Stats for gulp tasks]
+
+
+
+
+// =======================================================================
+//                              VARIABLES
+// _______________________________________________________________________
+
 var domain  = (argv.domain) ? '//'+ argv.domain : '//musique.project';
+
+// CONFIG ---------------------------
+var bootstrapFiles = _(buildConfig.bootstrap).values().flatten().value(),
+    libFiles       = _(buildConfig.libs).values().flatten().value(),
+    angularFiles   = mergeArray(_(buildConfig.angular).values().value()),
+    angularMods    = _(buildConfig.angular).keys().value(),
+    customJs       = _.union(angularFiles, bootstrapFiles), //only for jshint
+    fileList       = _.union(libFiles, customJsNew),
+    fontList       = ['vendor/boostrap-sass/assets/fonts/bootstrap/*'],
+    //phpViews       = 'src/OYST/**/views/**/*.html.twig',
+    scssSource     = 'scss/**/*.scss',
+    dev = {
+        inject:          buildConfig.build.development.folder,
+        css_inject_file: 'css.html.twig',
+        footer:          buildConfig.build.development.folder + '/' + buildConfig.build.development.js,
+        css:             'css', //path to css files
+        fonts:           'fonts', //path to fonts
+        scss:            'scss/main.scss', //path to 'include all' sass file
+        js:              '',
+        app:             'app.js',
+        domain:          ''
+    },
+    dist = {
+        inject:          buildConfig.build.production.folder,
+        css_inject_file: 'css.html.twig',
+        footer:          buildConfig.build.production.folder + '/' + buildConfig.build.production.js,
+        css:             'web/assets/css',
+        fonts:           'web/assets/fonts',
+        scss:            'assets/scss/main.scss',
+        js:              'web/assets/js',
+        app:             argv.app + '-app.js',
+        domain:          domain
+    },
+    localhost = 'http://musique.project/';
+
+    //create file for angular app ==> modules.js
+    fs.writeFileSync(buildConfig.bootstrap.config[0], "var angularModules = ['" + angularMods.join("', '") + "'];");
+
+
+throw '';
+
+
+// =======================================================================
+//                              FUNCTIONS
+// _______________________________________________________________________
+
 var gulp_src = gulp.src; // https://www.timroes.de/2015/01/06/proper-error-handling-in-gulp-js/
 gulp.src = function() {
   return gulp_src.apply(gulp, arguments)
     .pipe(plumber(function(error) {
       // Output an error message
       gutil.log(gutil.colors.red('Error (' + error.plugin + '): ' + error.message));
+      // emit the end event, to properly end the task
+        //this.emit('end');
     })
   );
 };
-
 
 // needed to keep order in dependency load
 function mergeArray (values) {
@@ -68,42 +130,23 @@ function mergeArray (values) {
     return _.flatten(result);
 }
 
-// CONFIG ---------------------------
-var bootstrapFiles = _(buildConfig.bootstrap).values().flatten().value(),
-    libFiles = _(buildConfig.libs).values().flatten().value(),
-    angularFiles = mergeArray(_(buildConfig.angular).values().value()),
-    angularMods = _(buildConfig.angular).keys().value(),
-    customJs = _.union(angularFiles, bootstrapFiles), //only for jshint
-    fileList = _.union(libFiles, customJsNew),
-    fontList = ['vendor/boostrap-sass/assets/fonts/bootstrap/*'],
-    phpViews = 'src/OYST/**/views/**/*.html.twig',
-    scssSource = 'scss/**/*.scss',
-    dev = {
-        inject: buildConfig.build.development.folder,
-        css_inject_file: 'css.html.twig',
-        footer: buildConfig.build.development.folder + '/' + buildConfig.build.development.js,
-        css: 'css', //path to css files
-        fonts: 'fonts', //path to fonts
-        scss: 'scss/main.scss', //path to 'include all' sass file
-        js: '',
-        app: 'app.js',
-        domain: ''
-    },
-    dist = {
-        inject: buildConfig.build.production.folder,
-        css_inject_file: 'css.html.twig',
-        footer: buildConfig.build.production.folder + '/' + buildConfig.build.production.js,
-        css: 'web/assets/css',
-        fonts: 'web/assets/fonts',
-        scss: 'assets/scss/main.scss',
-        js: 'web/assets/js',
-        app: argv.app + '-app.js',
-        domain: domain
-    },
-    localhost = 'http://musique.project/';
+// functions
+function phpLivereload (objWatch) {
+    var pathClean = objWatch.path.replace('/var/www/access-layer-app/','');
+    var index = pathClean.lastIndexOf("/");
+    var parentFolders = pathClean.slice(0,index);
+    var fileName = pathClean.slice(index);
+    var msgStatus = 'PHP View has ' + objWatch.type + ': ';
 
-    //create file for angular app
-    fs.writeFileSync(buildConfig.bootstrap.config[0], "var angularModules = ['" + angularMods.join("', '") + "'];");
+    gutil.log(
+        'gulp-watch: ' +
+        gutil.colors.green( msgStatus ) +
+        gutil.colors.magenta( parentFolders ) +
+        fileName
+    );
+
+    livereload.reload( localhost );
+}
 
 // transform path before replacing path
 var assetPathTransformation = function (domain, originalPath, targetPath){
@@ -117,8 +160,7 @@ var assetPathTransformation = function (domain, originalPath, targetPath){
     };
 };
 
-// TASKS ---------------------------
-// This task will create the initial inject files used by symfony2 ----------------------------------------
+// This task will create the initial inject files used by symfony2
 function createInjectFiles(destinationFile, destinationDir, type) {
     return file(
         destinationFile,
@@ -127,6 +169,15 @@ function createInjectFiles(destinationFile, destinationDir, type) {
     ).pipe(gulp.dest(destinationDir));
 }
 
+
+
+
+// =======================================================================
+//                                TASKS
+// _______________________________________________________________________
+
+
+//-----------------------------------Tasks for Injection----------------------------------
 gulp.task('dev-create-inject', ['dev-create-inject-js','dev-create-inject-css']);
 gulp.task('dist-create-inject', ['dist-create-inject-js','dist-create-inject-css']);
 
@@ -144,6 +195,8 @@ gulp.task('dist-create-inject-css', function () {
 });
 
 
+
+//--------------------------------Tasks for JAVASCRIPT------------------------------------
 gulp.task('lint-js', function () {
     // remove vendor libs
     var libs = [];
@@ -159,37 +212,42 @@ gulp.task('lint-js', function () {
         .pipe(debug({title: 'lint:'}))
         .pipe(jshint(
             {
-                undef: true,
+                undef:   true,
                 browser: true,
-                newcap: false,
+                newcap:  false,
                 globals: {
-                    angular: true,
-                    geoip2: true,
+                    angular:  true,
+                    geoip2:   true,
                     CryptoJS: true,
-                    crc32: true,
+                    crc32:    true,
                     FileList: true,
-                    _: true,
+                    _:        true,
+                    moment:   true,
                     angularModules: true,
-                    Pusher: true,
-                    moment: true,
-                    d3: true
                 }
             }
         ))
         .pipe(jshint.reporter('default'));
 });
 
-gulp.task('livereload-html', function () {
-    livereload();
-
-    // setTimeout(function () {
-    //     livereload();
-    // }, 1000);
+gulp.task('dev-inject-js', function () {
+    return gulp.src(dev.footer)
+        .pipe(inject(
+            gulp.src(fileList),
+            assetPathTransformation(dev.domain, '', '')
+        ))
+        .pipe(gulp.dest(dev.inject));
 });
 
-gulp.task('livereload-js', function () {
-    return gulp.src(customJs)
-        .pipe( livereload() );
+gulp.task('dist-inject-js', function () {
+    if (dist.footer) {
+        return gulp.src(dist.footer)
+        .pipe(inject(
+            gulp.src(dist.js + '/' + argv.app + '*'),
+            assetPathTransformation(dist.domain)
+        ))
+        .pipe(gulp.dest(dist.inject));
+    }
 });
 
 gulp.task('dist-js', function () {
@@ -202,20 +260,47 @@ gulp.task('dist-js', function () {
         ;
 });
 
-// ------- CSS Tasks -------
+
+
+//--------------------------------Tasks for CSS------------------------------------
+gulp.task('dev-css', function () {
+    return gulp.src(dev.scss)
+        .pipe(debug({title: 'sass:'}))
+        .pipe(sass({errLogToConsole: true}))
+        .pipe(prefix({
+            browsers: ['last 3 versions', '> 1%', 'ie 8', 'Firefox ESR', 'Opera 12.1'],
+            cascade: false
+        }))
+        // .pipe(csso())
+        .pipe(gulp.dest(dev.css));
+});
+
+gulp.task('dist-css', function () {
+    return gulp.src(dist.scss)
+        .pipe(sass())
+        .pipe(prefix({
+            browsers: ['last 3 versions', '> 1%', 'ie 8', 'Firefox ESR', 'Opera 12.1'],
+            cascade: false
+        }))
+        .pipe(cssminify({processImport: false}))
+        .pipe(csso()) // problem remove s on properties
+        .pipe(gulp.dest(dist.css));
+});
+
+gulp.task('dev-css-sm', function () {
+    return gulp.src(dev.scss)
+        .pipe(debug({title: 'sass:'}))
+        .pipe(sourcemaps.init())
+        .pipe(sass())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(dev.css))
+        .pipe(livereload());
+});
+
 gulp.task('dev-inject-css', function () {
     return gulp.src(buildConfig.build.development.folder +'/'+ dev.css_inject_file)
         .pipe(inject(
             gulp.src(dev.css + '/*'),
-            assetPathTransformation(dev.domain, '', '')
-        ))
-        .pipe(gulp.dest(dev.inject));
-});
-
-gulp.task('dev-inject-js', function () {
-    return gulp.src(dev.footer)
-        .pipe(inject(
-            gulp.src(fileList),
             assetPathTransformation(dev.domain, '', '')
         ))
         .pipe(gulp.dest(dev.inject));
@@ -232,6 +317,33 @@ gulp.task('dist-inject-css', function () {
     }
 });
 
+
+
+//--------------------------------Tasks for Fonts------------------------------------
+gulp.task('dev-copy-fonts', function () {
+    return gulp.src(fontList)
+        .pipe(gulp.dest(dev.fonts));
+});
+
+
+
+//-------------------------Tasks for LiveReloading-------------------------
+gulp.task('livereload-html', function () {
+    livereload();
+
+    // setTimeout(function () {
+    //     livereload();
+    // }, 1000);
+});
+
+gulp.task('livereload-js', function () {
+    return gulp.src(customJs)
+        .pipe( livereload() );
+});
+
+
+
+//-------------------------Default Tasks-------------------------
 gulp.task('clean', function () {
     del(
         [
@@ -241,58 +353,31 @@ gulp.task('clean', function () {
     );
 });
 
-gulp.task('dist-inject-js', function () {
-    if (dist.footer) {
-        return gulp.src(dist.footer)
-        .pipe(inject(
-            gulp.src(dist.js + '/' + argv.app + '*'),
-            assetPathTransformation(dist.domain)
-        ))
-        .pipe(gulp.dest(dist.inject));
-    }
-});
 
-gulp.task('dev-css', function () {
-    return gulp.src(dev.scss)
-        .pipe(debug({title: 'sass:'}))
-        .pipe(sass({errLogToConsole: true}))
-        .pipe(prefix({
-            browsers: ['last 3 versions', '> 1%', 'ie 8', 'Firefox ESR', 'Opera 12.1'],
-            cascade: false
-        }))
-        // .pipe(csso())
-        .pipe(gulp.dest(dev.css));
-});
+gulp.task('default', function () {
+    livereload.listen();
 
-gulp.task('dev-css-sm', function () {
-    return gulp.src(dev.scss)
-        .pipe(debug({title: 'sass:'}))
-        .pipe(sourcemaps.init())
-        .pipe(sass())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest(dev.css))
-        .pipe(livereload());
-});
+    runSequence(['dev']);
 
-gulp.task('dist-css', function () {
-    return gulp.src(dist.scss)
-        .pipe(sass())
-        .pipe(prefix({
-            browsers: ['last 3 versions', '> 1%', 'ie 8', 'Firefox ESR', 'Opera 12.1'],
-            cascade: false
-        }))
-        .pipe(cssminify({processImport: false}))
-        .pipe(csso()) // problem remove s on properties
-        .pipe(gulp.dest(dist.css));
-});
-
-gulp.task('dev-copy-fonts', function () {
-    return gulp.src(fontList)
-        .pipe(gulp.dest(dev.fonts));
+    gulp.watch(scssSource, ['dev-css']);
+    gulp.watch(angularFiles, ['livereload-js']);
+    gulp.watch(phpViews, phpLivereload);
 });
 
 
-// Build
+gulp.task('default-sm', function () {
+    livereload.listen();
+
+    runSequence(['dev','dev-css-sm']);
+
+    gulp.watch(scssSource, ['dev-css-sm']);
+    gulp.watch(angularFiles, ['livereload-js']);
+//    gulp.watch(phpViews, phpLivereload);   ===> uncomment when watching for PHP file changes!
+});
+
+
+
+//-------------------------Tasks for BUILDING (DEV and DIST)-------------------------
 gulp.task('dev', function () {
     return runSequence(
         [
@@ -327,42 +412,3 @@ gulp.task('dist',
             );
     }
 );
-
-gulp.task('default', function () {
-    livereload.listen();
-
-    runSequence(['dev']);
-
-    gulp.watch(scssSource, ['dev-css']);
-    gulp.watch(angularFiles, ['livereload-js']);
-    gulp.watch(phpViews, phpLivereload);
-});
-
-gulp.task('default-sm', function () {
-    livereload.listen();
-
-    runSequence(['dev','dev-css-sm']);
-
-    gulp.watch(scssSource, ['dev-css-sm']);
-    gulp.watch(angularFiles, ['livereload-js']);
-    gulp.watch(phpViews, phpLivereload);
-});
-
-
-// functions
-function phpLivereload (objWatch) {
-    var pathClean = objWatch.path.replace('/var/www/access-layer-app/','');
-    var index = pathClean.lastIndexOf("/");
-    var parentFolders = pathClean.slice(0,index);
-    var fileName = pathClean.slice(index);
-    var msgStatus = 'PHP View has ' + objWatch.type + ': ';
-
-    gutil.log(
-        'gulp-watch: ' +
-        gutil.colors.green( msgStatus ) +
-        gutil.colors.magenta( parentFolders ) +
-        fileName
-    );
-
-    livereload.reload( localhost );
-}
