@@ -1,0 +1,106 @@
+@mixin grid-factory ($properties, $listColumnSizes) {
+    $mapMediaQuery: $screen__bootstrap_media_query;
+
+    // loop media query
+    @each $media-name, $media-query-breakpoint in $mapMediaQuery {
+
+    // output
+    @media (min-width: $media-query-breakpoint) {
+
+    // loop column
+    @each $colSize in $listColumnSizes {
+        $colIndex: index($listColumnSizes, $colSize) - 1;
+
+        // output .namespace-xs-0
+        &-#{$media-name}-#{$colIndex} {
+        @each $propName in $properties {
+            #{$propName}: $colSize;
+        }
+        }
+
+    }
+    }
+
+    }
+}
+// .width {
+//     $unit: $grid-gutter-width / 2;
+//     $property: 'width';
+//     //@include grid-factory()
+// }
+// .height {
+//     $unit: $grid-gutter-width / 2;
+//     $property: 'height';
+//     //@include grid-factory()
+// }
+$layout__margin-padding_grid: 0, 2px, 5px, 10px, 15px, 20px, 25px, 30px, 45px, 60px, 75px, 90px, 105px, 120px;
+.t_padding {
+    $properties: 'padding';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+.t_padding-horizontal {
+    $properties: 'padding-right', 'padding-left';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+.t_padding-vertical {
+    $properties: 'padding-top', 'padding-bottom';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+.t_padding-top {
+    $properties: 'padding-top';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+.t_padding-right {
+    $properties: 'padding-right';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+.t_padding-bottom {
+    $properties: 'padding-bottom';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+.t_padding-left {
+    $properties: 'padding-left';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+
+.t_margin {
+    $properties: 'margin';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+.t_margin-horizontal {
+    $properties: 'margin-right', 'margin-left';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+.t_margin-vertical {
+    $properties: 'margin-top', 'margin-bottom';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+.t_margin-top {
+    $properties: 'margin-top';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+.t_margin-right {
+    $properties: 'margin-right';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+.t_margin-bottom {
+    $properties: 'margin-bottom';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
+
+.t_margin-left {
+    $properties: 'margin-left';
+    @include grid-factory($properties,$layout__margin-padding_grid);
+}
