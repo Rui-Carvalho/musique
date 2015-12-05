@@ -1,0 +1,26 @@
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+$screen__mobile-min-size: 0px;
+$screen__mobile-max-size: 729px;
+$screen__tablet-min-size: 730px;
+$screen__tablet-max-size: 1023px; // reduced 1px because bootstrap variable are wrong
+$screen__monitor-min-size: 1024px; // reduced 1px because bootstrap variable are wrong
+
+$screen__media_mobile: "(max-width: 729px)";
+$screen__media_tablet: "(min-width: 730px) and (max-width: 1023px)"; // reduced 1px because bootstrap variable are wrong
+$screen__media_tablet_desktop: "(min-width: 730px)";
+$screen__media_desktop: "(min-width: 1024px)"; // reduced 1px because bootstrap variable are wrong
+$screen__media_retina: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)";
+
+$screen__media_query: (
+   xs: ($screen__mobile-min-size,$screen__mobile-max-size),
+   sm: ($screen__tablet-min-size,$screen__tablet-max-size),
+   md: ($screen__monitor-min-size)
+);
+
+$screen__bootstrap_media_query: (
+   xs: ($screen__mobile-min-size),
+   sm: ($screen__tablet-min-size),
+   md: ($screen__monitor-min-size)
+);
