@@ -1,0 +1,56 @@
+{
+    "libs": {
+        "lodash":  ["vendor/lodash/lodash.js"],
+        "moment":  ["vendor/moment/moment.js"],
+        "aes":     ["vendor/cryptojslib/rollups/aes.js"],
+        "ecb":     ["vendor/cryptojslib/rollups/mode-ecb.js"],
+        "crc":     ["vendor/js-crc/src/crc.js"],
+        "angular": ["vendor/angular/angular.js"]
+    },
+    "angular": {
+        "base64":     ["vendor/angular-base64/angular-base64.js"],
+        "ngResource": ["vendor/angular-resource/angular-resource.js"],
+        "ngStorage":  ["vendor/ngstorage/ngStorage.js"],
+        "ngCookies":  ["vendor/angular-cookies/angular-cookies.js"],
+        "ngAnimate":  ["vendor/angular-animate/angular-animate.js"],
+        "ngSanitize": ["vendor/angular-sanitize/angular-sanitize.js"],
+
+        "ui.bootstrap.tpls": ["vendor/angular-bootstrap/ui-bootstrap.js"],
+        "ui.bootstrap":      ["vendor/angular-bootstrap/ui-bootstrap.js"],
+        "ui.router":         ["vendor/angular-ui-router/release/angular-ui-router.js"],
+
+        "duScroll":        ["vendor/angular-scroll/angular-scroll.js"],
+        "angular-jwt":     ["vendor/angular-jwt/dist/angular-jwt.js"],
+        "angular-cache":   ["vendor/angular-cache/dist/angular-cache.js"],
+        "angular-storage": ["vendor/a0-angular-storage/dist/angular-storage.js"],
+        "angularMoment":   ["vendor/angular-moment/angular-moment.js"],
+
+        "app.core":         ["js/shared/Core/config.js", "js/shared/Core/*/*.js"],
+        "app.auth":         ["js/shared/Auth/config.js", "js/shared/Auth/*/*.js"],
+        "app.user":         ["js/shared/User/config.js", "js/shared/User/*/*.js"],
+        "app.nav":          ["js/shared/Navigation/config.js", "js/shared/Navigation/*/*.js"],
+        "app.track":        ["js/shared/Track/config.js", "js/shared/Track/*/*.js"],
+        "app.crypt":        ["js/shared/Crypt/config.js", "js/shared/Crypt/*/*.js"],
+
+        "app.preview":     ["js/spa/Preview/config.js", "js/spa/Preview/*/*.js"],
+        "app.menu":        ["js/spa/Menu/config.js", "js/spa/Menu/*/*.js"],
+        "app.header":      ["js/spa/Header/config.js", "js/spa/Header/*/*.js"],
+        "app.permission":  ["js/spa/Permission/config.js", "js/spa/Permission/*/*.js"],
+        "app.ui":          ["js/spa/UI/config.js", "js/spa/UI/*/*.js"],
+        "app.account":     ["js/spa/Account/config.js", "js/spa/Account/*/*.js"]
+    },
+    "bootstrap": {
+        "config": ["js/spa/modules.js"],
+        "app": ["js/spa/app.js"]
+    },
+    "build": {
+        "development": {
+            "folder": "dev",
+            "js": "spa.js.html"
+        },
+        "production": {
+            "folder": "dist",
+            "js": "spa.js.html"
+        }
+    }
+}

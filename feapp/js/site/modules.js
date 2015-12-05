@@ -1,0 +1,1 @@
+var angularModules = ['ngResource', 'ngTouch', 'ngStorage', 'ngAnimate', 'ngCookies', 'ngSanitize', 'ui.bootstrap.tpls', 'ui.bootstrap', 'angular-jwt', 'angular-cache', 'angular-storage', 'angularMoment', 'app.core', 'app.auth', 'app.nav', 'app.menu', 'app.youtube', 'app.track', 'app.crypt'];
