@@ -71,49 +71,84 @@
 
             <div class="main-content">
                 <div class="container">
-                    <div class="row">
+
+
+                <!-- ==================ROW 1================== -->
+                    <div class="row features-area">
+
                         <div class="col-xs-2">
-                            <img src="images/round_icon_clock.png" class="pull-left"/>
-                            <p class="clearfix">Apprenez quand vous voulez</p>
+                            <img src="images/round_icon_clock.png" class="pull-left features-imgs"/>
+                            <h4 class="clearfix">Apprenez quand vous voulez</h4>
                             <p>
                                 Profitez d'un acces libre et ilimite a votre espace personnel. Vous pourrez ainse
                                consulter vos ebooks n'importe ou et n'importe quad.
                             </p>
                         </div>
                         <div class="col-xs-2">
-                            <img src="images/round_icon_display.png" class="pull-left"/>
-                            <p class="clearfix">Disponible sur tous vos ecrans</p>
+                            <img src="images/round_icon_display.png" class="pull-left features-imgs"/>
+                            <h4 class="clearfix">Disponible sur tous vos ecrans</h4>
                             <p>
                                 Accedez a votre espace personnel et telechargez vos ebooks de cours de guitarre
                                 depuis votre PC, Mac, tablette ou smartphone.
                             </p>
                         </div>
                         <div class="col-xs-2">
-                            <img src="images/round_icon_chat.png" class="pull-left"/>
-                            <p class="clearfix">Vos outils pedagogiques</p>
+                            <img src="images/round_icon_chat.png" class="pull-left features-imgs"/>
+                            <h4 class="clearfix">Vos outils pedagogiques</h4>
                             <p>
                                 Apprenez a travers des cours complets et des exercices pratiques adaptes a votre
                                 niveau. Les cours sont composes de tablatures afin d'etre accessibles a tous.
                             </p>
                         </div>
+
                     </div>
+
+
+                    <!-- ==================ROW 2================== -->
                     <div class="row">
                         <div class="col-xs-6"><h3>Cours populaires</h3></div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-3 text-center">
-                            <div class="">
-                                <img src="images/guitar_accoustique.png" />
-                                <p>Cours de Guitare Acoustique</p>
-                                <div class="">
+
+                    <div class="row card-area">
+                        <div class="col-xs-6 text-center">
+                            
+                            <div class="course-card pull-left">
+                                <img src="images/guitar_accoustique.png" class="image-area" />
+                                <p class="card-description txt_card-description">Cours de Guitare Acoustique</p>
+                                <div class="discover-area">
                                     <button class="button-discover">DÉCOUVRIR CE COURS</button>
                                 </div>
                             </div>
+                            <div class="course-card pull-left">
+                                <img src="images/guitar_accoustique.png" class="image-area" />
+                                <p class="card-description txt_card-description">Cours de Guitare Acoustique</p>
+                                <div class="discover-area">
+                                    <button class="button-discover">DÉCOUVRIR CE COURS</button>
+                                </div>
+                            </div>
+                            
+                            <div class="course-card pull-left">
+                                <img src="images/guitar_accoustique.png" class="image-area" />
+                                <p class="card-description txt_card-description">Cours de Guitare Acoustique</p>
+                                <div class="discover-area">
+                                    <button class="button-discover">DÉCOUVRIR CE COURS</button>
+                                </div>
+                            </div>
+                            <div class="course-card pull-left">
+                                <img src="images/guitar_accoustique.png" class="image-area" />
+                                <p class="card-description txt_card-description">Cours de Guitare Acoustique</p>
+                                <div class="discover-area">
+                                    <button class="button-discover">DÉCOUVRIR CE COURS</button>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="col-xs-3 text-center">ONE</div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-3">
+
+
+                    <!-- ==================ROW 3================== -->
+                    <div class="row pedagogie-area">
+                        <div class="col-xs-4">
                             <h3>Une pedagogie adaptee a tous</h3>
                             <p>
                                 Des cours complets et progressifs pour les debutants. Vous pourrez jouer rapidement vos primiers 
@@ -125,10 +160,12 @@
                             </p>
                         </div>
 
-                        <div class="col-xs-3 text-center">
-                        <img src="images/guitar_girl.png"/>
+                        <div class="col-xs-2 text-right">
+                        <img src="images/guitar_girl.png" class="img-responsive" />
                         </div>
                     </div>
+
+
                 </div>
             </div>
             
