@@ -1,0 +1,47 @@
+.course-card {
+	$image-padding: 5px;
+
+	border: 1px solid #e1e1e1;
+	border-radius: 2px;
+	width: 22%; //width: #{($image-padding + $image-padding + 240)}px;
+	box-shadow: 0px 0px 5px 2px rgba(50,50,50,0.4);
+
+	margin: 0 2%;
+
+	// @media #{$screen__media_desktop} {
+
+	// }
+
+	// @media #{$screen__media_desktop} {
+
+	// }
+
+	.image-area {
+		width: 100%;
+		padding: $image-padding $image-padding;
+	}
+
+	.discover-area {
+		@include generate-grandient(#e4e4e4, #f2f2f2);
+		padding: 10px 0px;
+	}
+
+	&:first-child {
+		margin-left: 0;
+	}
+
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+.card-description {
+	text-align: left;
+	min-height: 56px;
+	padding: 6px 15px;
+}
+
+.card-area {
+	padding-top: 10px;
+	padding-bottom: 50px;
+}
