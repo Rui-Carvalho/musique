@@ -49,7 +49,10 @@
                             <a href="#" class="button-musique t_margin-right-xs-4 anchor">Instruments</a>
                             <a href="#" class="button-musique t_margin-right-xs-4 anchor">Notre offre</a>
 
-                            <button class="button-main">Me connecter</button>
+                            <button class="button-main">
+                                <span class="icon-user icon-medium"></span>
+                                Me connecter
+                            </button>
                         </div>
                     </div>
 
@@ -177,8 +180,9 @@
                     <div class="container">
                         <div class="row">
 
-                            <div class="col-xs-1">
-                                <span class="">Paiement sécurité</span>
+                            <div class="col-xs-1 payment-area">
+                                <div class="icon-lock icon-extra-large"></div>
+                                <div class="">Paiement sécurité</div>
                             </div>
 
                             <div class="col-xs-2 text-center">
