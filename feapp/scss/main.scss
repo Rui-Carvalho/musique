@@ -3,9 +3,12 @@
 @import 'settings/variables';
 
 // components
+@import 'components/mixins';
 @import 'components/header';
+@import 'components/footer';
 @import 'components/text';
 @import 'components/buttons';
+@import 'components/page-fullbleed-images';
 
 // trumps
 @import 'trumps/spacings';

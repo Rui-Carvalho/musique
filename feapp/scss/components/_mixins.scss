@@ -1,0 +1,49 @@
+@mixin build-button(
+		$box-shadow-color, 
+		$gradient-top-color, $gradient-bottom-color, 
+		$border-color, 
+		$font-color, $font-size, $text-shadow-color, 
+		$padding-v, $padding-h,
+		$button-radius
+	) {
+	-moz-box-shadow:inset 0px 1px 0px 0px $box-shadow-color;
+	-webkit-box-shadow:inset 0px 1px 0px 0px $box-shadow-color;
+	box-shadow:inset 0px 1px 0px 0px $box-shadow-color;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, $gradient-top-color), color-stop(1, $gradient-bottom-color));
+	background:-moz-linear-gradient(top, $gradient-top-color 5%, $gradient-bottom-color 100%);
+	background:-webkit-linear-gradient(top, $gradient-top-color 5%, $gradient-bottom-color 100%);
+	background:-o-linear-gradient(top, $gradient-top-color 5%, $gradient-bottom-color 100%);
+	background:-ms-linear-gradient(top, $gradient-top-color 5%, $gradient-bottom-color 100%);
+	background:linear-gradient(to bottom, $gradient-top-color 5%, $gradient-bottom-color 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$gradient-top-color', endColorstr='$gradient-bottom-color',GradientType=0);
+	background-color:$gradient-top-color;
+	-moz-border-radius:$button-radius;
+	-webkit-border-radius:$button-radius;
+	border-radius:$button-radius;
+	border:1px solid $border-color;
+	display:inline-block;
+	cursor:pointer;
+	color: $font-color;
+	font-family:Arial;
+	font-size:$font-size;
+	font-weight:bold;
+	padding:$padding-v $padding-h;
+	text-decoration:none;
+	text-shadow:0px 1px 0px $text-shadow-color;
+
+	&:hover {
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, $gradient-bottom-color), color-stop(1, $gradient-top-color));
+		background:-moz-linear-gradient(top, $gradient-bottom-color 5%, $gradient-top-color 100%);
+		background:-webkit-linear-gradient(top, $gradient-bottom-color 5%, $gradient-top-color 100%);
+		background:-o-linear-gradient(top, $gradient-bottom-color 5%, $gradient-top-color 100%);
+		background:-ms-linear-gradient(top, $gradient-bottom-color 5%, $gradient-top-color 100%);
+		background:linear-gradient(to bottom, $gradient-bottom-color 5%, $gradient-top-color 100%);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$gradient-bottom-color', endColorstr='$gradient-top-color',GradientType=0);
+		background-color:$gradient-bottom-color;
+	}
+
+	&:active {
+		position:relative;
+		top:1px;
+	}
+}
