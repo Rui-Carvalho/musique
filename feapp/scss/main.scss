@@ -1,14 +1,20 @@
+// ===VENDOR===
 @import 'vendor/bootstrap';
+@import 'vendor/fontello';
 
+// ===SETTINGS===
 @import 'settings/variables';
 
-// components
+// ===COMPONENTS===
 @import 'components/mixins';
+
 @import 'components/header';
 @import 'components/footer';
 @import 'components/text';
 @import 'components/buttons';
+@import 'components/cards';
+@import 'components/page-rows';
 @import 'components/page-fullbleed-images';
 
-// trumps
+// ===TRUMPS===
 @import 'trumps/spacings';
