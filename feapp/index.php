@@ -41,15 +41,15 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-4">
-                            <a class="button-musique  is-active  t_margin-right-xs-4">
+                        <div class="col-xs-4" id="mainNav">
+                            <a href="#" class="button-musique t_margin-right-xs-4 anchor is-active">
                                 <span class="text-anchor">Accueil</span>
                             </a>
-                            <a class="button-musique t_margin-right-xs-4">Nos Cours</a>
-                            <a class="button-musique t_margin-right-xs-4">Instruments</a>
-                            <a class="button-musique t_margin-right-xs-4">Notre offre</a>
+                            <a href="#" class="button-musique t_margin-right-xs-4 anchor">Nos Cours</a>
+                            <a href="#" class="button-musique t_margin-right-xs-4 anchor">Instruments</a>
+                            <a href="#" class="button-musique t_margin-right-xs-4 anchor">Notre offre</a>
 
-                            <button class="">Me connecter</button>
+                            <button class="button-main">Me connecter</button>
                         </div>
                     </div>
 
@@ -59,33 +59,121 @@
                 </div>
             </header>
 
-            
-            {% include 'BOFFrameworkBundle:partials:navigation.html.twig' %}
-            
-            <div class="bof-main-content">
-                content....
+
+
+
+            <div class="img-fullbleed">
+                <img src="images/big_image_fullbleed_guitars.jpg" class="img-responsive"/>
             </div>
             
 
-            <footer class="footer border-top hidden-print background-default">
-                <div class="row offset-top-medium">
-                    <span class="">Paiement sécurité</span>
-                    <span class="">Cours de Musique</span>
-                    <span class="">Cours de Guitare</span>
-                    <span class="">Cours de Piano</span>
-                    <span class="">Cours Basse</span>
-                    <span class="">Cours Batterie</span>
+
+
+            <div class="main-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <img src="images/round_icon_clock.png" class="pull-left"/>
+                            <p class="clearfix">Apprenez quand vous voulez</p>
+                            <p>
+                                Profitez d'un acces libre et ilimite a votre espace personnel. Vous pourrez ainse
+                               consulter vos ebooks n'importe ou et n'importe quad.
+                            </p>
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="images/round_icon_display.png" class="pull-left"/>
+                            <p class="clearfix">Disponible sur tous vos ecrans</p>
+                            <p>
+                                Accedez a votre espace personnel et telechargez vos ebooks de cours de guitarre
+                                depuis votre PC, Mac, tablette ou smartphone.
+                            </p>
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="images/round_icon_chat.png" class="pull-left"/>
+                            <p class="clearfix">Vos outils pedagogiques</p>
+                            <p>
+                                Apprenez a travers des cours complets et des exercices pratiques adaptes a votre
+                                niveau. Les cours sont composes de tablatures afin d'etre accessibles a tous.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6"><h3>Cours populaires</h3></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 text-center">
+                            <div class="">
+                                <img src="images/guitar_accoustique.png" />
+                                <p>Cours de Guitare Acoustique</p>
+                                <div class="">
+                                    <button class="button-discover">DÉCOUVRIR CE COURS</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 text-center">ONE</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <h3>Une pedagogie adaptee a tous</h3>
+                            <p>
+                                Des cours complets et progressifs pour les debutants. Vous pourrez jouer rapidement vos primiers 
+                                morceaux tout en apprenant led fundamentaux.
+                                Des cours de perfectionnement pour les plus experimentes. Vous voulez aborder un nouveau style ou
+                                vous perfectionner? Les professeurs qui ont composes les cours vous devoilent des techniques, 
+                                truc es astuces. Vous trouverez aussi des tablatures adaptees a votre niveau.
+                                Choisissez le style qui vous correspond et progressez efficacement grace a notre methode pedagogique!
+                            </p>
+                        </div>
+
+                        <div class="col-xs-3 text-center">
+                        <img src="images/guitar_girl.png"/>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <button>Inscrivez vous</button>
-                    <span class="">Accès illimité à les cours</span>
+            </div>
+            
+
+
+
+            <footer>
+                <div class="container-fluid top-footer top-footer--default top-footer--big">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-xs-1">
+                                <span class="">Paiement sécurité</span>
+                            </div>
+
+                            <div class="col-xs-2 text-center">
+                                <div class=""><img src="images/logo_piano.png" class="pull-left" /></div>
+                                <div class="">Cours de Piano</div>
+                                <div class="">Cours Basse</div>
+                                <div class="">Cours Batterie</div>
+                            </div>
+
+                            <!--span class="">Cours de Musique</span>
+                            <span class="">Cours de Guitare</span-->
+
+                            <div class="col-xs-3 text-right">
+                                <div class="row">
+                                    <button class="button-inscrivez">INSCRIVEZ VOUS</button>
+                                </div>
+                                <div>
+                                    <span class="">Accès illimité à les cours</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="row offset-top-medium">
-                    <span class="">Mention légale</span>
-                    <span class="">Conditions générales de vente</span>
-                    <span class="">Qui sommes nous?</span>
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a class="">Mention légale</a>
+                            <a class="">Conditions générales de vente</a>
+                            <a class="">Qui sommes nous?</a>
+                        </div>
+                    </div>
                 </div>
-                <!--div class="container"></div-->
             </footer>
             
         </div>
