@@ -1,17 +1,21 @@
 .button-musique {
     padding: 10px;
     border: 1px solid transparent;
+    border-radius: 4px;
 
     &.is-active,
-    &:hover {
+    &:hover,
+    &:visited {
         background: #3a4650;
         border-color: #333e46;
+        color: white;
+        text-decoration: none;
         //box-shadow: 0 0 0 0 rgba(0 0 0 0); 
     }
 }
 
 .button-main {
-	@include build-button(#374550,#1f8f09,#256917,#465762,#ffffff, 14px, #5b7532, 12px, 40px, 6px);
+	@include build-button(#374550,#1f8f09,#256917,#465762,#ffffff, 14px, #5b7532, 6px, 35px, 6px);
 }
 
 .button-discover {
