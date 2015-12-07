@@ -18,3 +18,8 @@ musique/feapp/vendor/
 ```
 Note: configured in musique/feapp/.bowerrc
 
+
+Photoshop file was a bit clumsy in terms of page separation and an image that should be split into its components.
+
+Project Uses FontAwesome icons but I used Fontello since it is a much more powerful font icon library, allowing to even create your own font icon from SVG files.
+
